@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ExcelExportComponent } from './excel-export/excel-export.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ExcelExportComponent
   ],
   imports: [
     BrowserModule,
