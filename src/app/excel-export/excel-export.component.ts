@@ -26,11 +26,11 @@ export class ExcelExportComponent implements OnInit {
   data: string = 'Lorem ipsum\n\tdolor sit amet';
 
   exportToExcel() {
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet([{ data: this.data }]);
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet([{ data: this.data }], { header: ['data'], skipHeader: true });
     const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-    const excelBlob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    saveAs(excelBlob, 'exported_data.xlsx');
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(blob, 'exported_data.xlsx');
   }
 
 }
